@@ -2,8 +2,8 @@
 // A simple linked list class with basic operations.
 
 public class List {
-    private ListNode firstNode;
-    private ListNode lastNode;
+    private ListLink firstNode;
+    private ListLink lastNode;
     private String name; // string like "list" used in printing
 
     // constructor creates empty List with "list" as the name
@@ -20,17 +20,17 @@ public class List {
     // insert Object at front of List
     public void insertAtFront(Object insertItem) {
         if (isEmpty()) // firstNode and lastNode refer to same object
-            firstNode = lastNode = new ListNode(insertItem);
+            firstNode = lastNode = new ListLink(insertItem);
         else // firstNode refers to new node
-            firstNode = new ListNode(insertItem, firstNode);
+            firstNode = new ListLink(insertItem, firstNode);
     }
 
     // insert Object at back of List
     public void insertAtBack(Object insertItem) {
         if (isEmpty()) // firstNode and lastNode refer to same Object
-            firstNode = lastNode = new ListNode(insertItem);
+            firstNode = lastNode = new ListLink(insertItem);
         else // lastNode's nextNode refers to new node
-            lastNode = lastNode.nextNode = new ListNode(insertItem);
+            lastNode = lastNode.nextNode = new ListLink(insertItem);
     }
 
     // remove first node from List
@@ -60,7 +60,7 @@ public class List {
         if (firstNode == lastNode)
             firstNode = lastNode = null;
         else { // locate new last node
-            ListNode current = firstNode;
+            ListLink current = firstNode;
 
             // loop while current node does not refer to lastNode
             while (current.nextNode != lastNode)
@@ -86,7 +86,7 @@ public class List {
         }
 
         System.out.printf("%s is: ", name);
-        ListNode current = firstNode;
+        ListLink current = firstNode;
 
         // while not at end of list, output current node's data
         while (current != null) {
@@ -102,7 +102,7 @@ public class List {
 class ListNode {
     // package access members; List can access these directly
     Object data; // data for this node
-    ListNode nextNode; // reference to the next node in the list
+    ListLink nextNode; // reference to the next node in the list
 
     // constructor creates a ListNode that refers to object
     ListNode(Object object) {
@@ -111,7 +111,7 @@ class ListNode {
 
     // constructor creates ListNode that refers to the specified
     // object and to the next ListNode
-    ListNode(Object object, ListNode node) {
+    ListNode(Object object, ListLink node) {
         data = object;
         nextNode = node;
     }
